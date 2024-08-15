@@ -1,0 +1,119 @@
+.sidebar {
+  background-color: #2c3e50 ;
+  color: hsl(192, 15%, 94%) !important;
+
+  width: 262px !important ;
+  position: fixed;
+
+ 
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+
+
+
+
+.sidebar-menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 210px ;
+}
+
+.sidebar-menu li {
+  margin-bottom: 15px ;
+}
+
+.sidebar-menu a {
+  color: #020f18 ; 
+  font-size: 16px ;
+  text-decoration: none;
+  display: flex ;
+  align-items: center;
+  padding: 10px 15px ;
+  border-radius: 4px;
+  transition: background-color 0.5s ease, color 0.5s ease !important;
+}
+
+.sidebar-menu a:hover, .sidebar-menu .active a {
+  background-color: #34495e !important;
+  color: #ecf0f1 !important;
+}
+
+.sidebar-menu a .fa-icon {
+  margin-right: 10px !important;
+  font-size: 18px !important;
+}
+
+.submenu-list {
+  padding-left: 20px !important;
+}
+
+.menu-arrow {
+  margin-left: auto;
+}
+
+.submenu.open > a .menu-arrow {
+  transform: rotate(90deg) !important;
+}
+
+.sidebar-btn {
+  background-color: #2980b9 !important ;
+  color: #fff !important;
+  padding:10px !important;
+  text-align: center !important;
+  display: block !important;
+  border-radius: 20px !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.sidebar-btn:hover {
+  background-color: #3498db  !important;
+}
+
+
+/* Styles généraux pour la scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 3px; /* Largeur de la scrollbar */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #aeb3b8; /* Couleur du pouce (la partie déplaçable) */
+  border-radius: 4px !important; /* Arrondir les bords du pouce */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #3498db; /* Couleur du pouce au survol */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background-color: #d8e1e7; /* Couleur de l'arrière-plan de la scrollbar */
+}
+
+
+.icon-with-margin {
+  margin-right: 8px; /* Ajustez la valeur selon vos besoins */
+}
+
+
+/* Sidebar.css */
+/* Sidebar.css */
+
+/* Style pour les badges dans les NavLink */
+.badg {
+  position: absolute; /* Positionnement fixe par rapport au parent */
+  top: 28%; /* Centre verticalement */
+  right: 10px; /* Positionne à droite avec un espace de 10px */
+  /* Centre parfaitement le badge verticalement */
+  background-color: rgb(255, 166, 0); /* Couleur de fond du badge */
+  color: #fff !important; /* Couleur du texte du badge */
+  border-radius: 50%; /* Badge rond */
+  width: 20px; /* Largeur du badge */
+  height: 20px; /* Hauteur du badge */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px; /* Taille de police pour le texte du badge */
+}
+

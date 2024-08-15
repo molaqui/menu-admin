@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-fluid {
+    margin-top: 50px;
+    max-width: 95%;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 15px;
+   
+    padding: 30px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.search-container {
+    position: relative;
+    width: 300px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 40px 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 1.2rem;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+}
+
+.filter-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #007bff;
+    font-size: 1.2rem;
+}
+
+.filter-select {
+    padding-left: 35px; /* To make room for the icon */
+    border-radius: 50px;
+    border: 1px solid #ccc;
+   
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+    height: 40px;
+}
+
+.filter-select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+.thead-custom th {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 1rem;
+}
+
+.pagination .page-link {
+    color: #007bff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.pagination .page-link:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: white;
+}

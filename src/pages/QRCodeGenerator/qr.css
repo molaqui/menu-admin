@@ -1,0 +1,109 @@
+.qr-container {
+  padding: 10px;
+  border: 1px solid #ddd;
+  display: inline-block;
+  background: white;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.ml-2 {
+  margin-left: 0.5rem !important;
+}
+
+.search-bar {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.input-group-text {
+  background-color: #fff;
+  border-left: 0;
+}
+
+.input-group .form-control {
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group-append .input-group-text {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+.thead-dark {
+  background-color: #343a40;
+  color: white;
+}
+
+.filter-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.filter-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+.filter-select {
+  padding-left: 35px; /* To make room for the icon */
+  border-radius: 50px;
+  border: 1px solid #ccc;
+ 
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
+  height: 40px;
+}
+
+.filter-select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.pagination .page-link {
+  color: #007bff;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.pagination .page-link:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}

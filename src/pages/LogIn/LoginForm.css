@@ -1,0 +1,46 @@
+.input-error {
+  border-color: red !important;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.language-dropdown .dropdown-toggle {
+  background-color: #f8f9fa;
+  border: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.language-dropdown .dropdown-toggle img.flag-icon {
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+.language-dropdown .dropdown-menu {
+  min-width: 200px;
+}
+
+.language-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+}
+
+.language-dropdown .dropdown-item img.flag-icon {
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+}

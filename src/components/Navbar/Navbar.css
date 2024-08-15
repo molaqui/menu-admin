@@ -1,0 +1,27 @@
+.notification-message {
+    padding: 10px !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+  }
+  
+  .notification-message p {
+    margin: 0 !important;
+  }
+  
+  .notification-message .noti-details {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .notification-list {
+    list-style-type: none !important;
+    padding: 0 !important;
+  }
+  
+  .notification-title {
+    font-weight: bold !important;
+  }
+  
+  .media-body {
+    margin-left: 10px !important;
+  }
+  

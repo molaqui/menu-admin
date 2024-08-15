@@ -1,0 +1,109 @@
+.filter-search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-container,
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.filter-icon,
+.search-icon {
+    margin-right: 8px;
+}
+
+.filter-select,
+.search-input {
+    margin-left:1px;
+}
+/* Pagination Styles */
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 20px 0;
+    list-style: none;
+}
+
+.page-item {
+    margin: 0 2px;
+}
+
+.page-link {
+    display: block;
+    padding: 8px 16px;
+    border: 1px solid #ddd !important;
+    border-radius: 4px;
+    color: #007bff !important;
+    text-align: center;
+    text-decoration: none;
+    background-color: #fff !important;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.page-link:hover {
+    background-color: #e9ecef !important;
+    border-color: #ddd !important;
+}
+
+.page-item.active .page-link {
+    background-color: #007bff !important;
+    color: #fff !important;
+    border-color: #007bff !important;
+}
+
+.page-link[aria-label="Previous"]::before {
+    content: '←';
+}
+
+.page-link[aria-label="Next"]::before {
+    content: '→';
+}
+
+
+/* Conteneur de prévisualisation d'image */
+.preview-container {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+}
+
+/* Image de prévisualisation */
+.preview-image {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Bouton de suppression */
+.remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    background-color: #ff6b6b; /* Couleur rouge clair */
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Effet au survol */
+.remove-button:hover {
+    background-color: #ff4d4d; /* Couleur rouge plus foncé */
+    transform: scale(1.1);
+}
+
+/* Icône de suppression */
+.remove-icon {
+    line-height: 1;
+}

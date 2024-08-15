@@ -1,0 +1,31 @@
+.image-preview-container {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.image-preview {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-remove-image {
+    position: absolute;
+    top: 0px;
+    right: 20px !important;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    transform: translate(50%, -50%);
+}
+
+.image-uploads {
+    text-align: center;
+    margin-top: 10px;
+}
