@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_BASE_URL = 'https://faithful-charisma-production.up.railway.app'; 
+const API_BASE_URL = 'https://spring-menu-production.up.railway.app'; 
 const VisiteService = {
   incrementVisite: async (storeName) => {
     try {

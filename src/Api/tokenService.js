@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const API_URL = 'https://faithful-charisma-production.up.railway.app/api/tokens';
-const AUTH_URL = 'https://faithful-charisma-production.up.railway.app/api/auth';
+const API_URL = 'https://spring-menu-production.up.railway.app/api/tokens';
+const AUTH_URL = 'https://spring-menu-production.up.railway.app/api/auth';
 
 const getUserId = () => {
   return Cookies.get('userId');

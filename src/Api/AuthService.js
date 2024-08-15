@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie'; // Import js-cookie to handle cookies
 
-const API_URL = 'https://faithful-charisma-production.up.railway.app/api/auth';
+const API_URL = 'https://spring-menu-production.up.railway.app/api/auth';
 
 const login = async (email, password) => {
   const response = await axios.post(`${API_URL}/login`, null, {

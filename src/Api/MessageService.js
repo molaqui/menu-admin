@@ -2,7 +2,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const API_URL = 'https://faithful-charisma-production.up.railway.app/api/messages';
+const API_URL = 'https://spring-menu-production.up.railway.app/api/messages';
 
 const getUserId = () => {
   return Cookies.get('userId');
