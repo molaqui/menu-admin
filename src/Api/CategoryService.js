@@ -31,20 +31,41 @@ const getAllCategoryNames = () => {
   return axios.get(`${API_URL}/names/${userId}`);
 };
 
-const deleteCategory = (id) => {
-  return axios.delete(`${API_URL}/${id}`);
-};
-
-
 // Nouvelle méthode pour obtenir le nombre de catégories
 const getCategoryCountByUserId = () => {
   const userId = getUserId();
   return axios.get(`${API_URL}/count/${userId}`);
 };
+
+
+// Nouvelle méthode pour ajouter des catégories prédéfinies à l'utilisateur
+const addPredefinedCategoriesToUser = (userId, categoryIds, foodIds) => {
+  const payload = {
+    userId: userId,
+    categoryIds: categoryIds,
+    foodIds: foodIds
+  };
+  console.log("Payload:", payload); // Vérifiez le payload
+  return axios.post(`${API_URL}/add-predefined`, payload);
+};
+
+
+// Nouvelle méthode pour obtenir les catégories prédéfinies
+const getPredefinedCategories = () => {
+  return axios.get(`${API_URL}/predefined`);
+};
+
+// Supprimer une catégorie par ID
+const deleteCategory = (id) => {
+  return axios.delete(`${API_URL}/${id}`);
+};
+
 export default {
   getAllCategories,
   uploadImage,
   getAllCategoryNames,
   deleteCategory,
-  getCategoryCountByUserId
+  getCategoryCountByUserId,
+  addPredefinedCategoriesToUser,
+  getPredefinedCategories
 };

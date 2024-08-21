@@ -4,12 +4,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import 'react-toastify/dist/ReactToastify.css';
 import Cookies from 'js-cookie';
+import { useTranslation } from 'react-i18next';
+import { Spinner } from 'react-bootstrap';
 
 const AddHeaderImage = () => {
+  const { t } = useTranslation();
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
   const [bgImage, setBgImage] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // État pour le chargement
+
   const userId = Cookies.get('userId');
 
   const handleBgImageChange = (e) => {
@@ -45,8 +50,9 @@ const AddHeaderImage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Début du chargement
     if (!bgImage) {
-      Swal.fire('Error', 'Please select a background image.', 'error');
+      Swal.fire('Error', t('error.noImageSelected'), 'error');
       return;
     }
     try {
@@ -57,13 +63,15 @@ const AddHeaderImage = () => {
       };
 
       await headerImageService.saveHeaderImage(headerImageData, userId);
-      Swal.fire('Success', 'Header image added successfully', 'success');
+      setIsLoading(false); // Fin du chargement
+      Swal.fire('Success', t('success.imageAdded'), 'success');
       setTitle('');
       setSubtitle('');
       setBgImage(null);
       setPreviewImage(null);
     } catch (error) {
-      Swal.fire('Error', `Error adding header image: ${error.message}`, 'error');
+      setIsLoading(false); // Fin du chargement
+      Swal.fire('Error', `${t('error.imageAdd')} ${error.message}`, 'error');
     }
   };
 
@@ -72,8 +80,8 @@ const AddHeaderImage = () => {
       <ToastContainer />
       <div className="page-header">
         <div className="page-title">
-          <h4>Add Header Image</h4>
-          <h6>Create new header image entry</h6>
+          <h4>{t('addHeaderImage.pageTitle')}</h4>
+          <h6>{t('addHeaderImage.pageSubtitle')}</h6>
         </div>
       </div>
 
@@ -83,33 +91,33 @@ const AddHeaderImage = () => {
             <div className="row">
               <div className="col-lg-6 col-sm-12">
                 <div className="form-group">
-                  <label>Title</label>
+                  <label>{t('addHeaderImage.titleLabel')}</label>
                   <input
                     type="text"
                     className="form-control"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     required
-                    placeholder="Enter title"
+                    placeholder={t('addHeaderImage.titlePlaceholder')}
                   />
                 </div>
               </div>
               <div className="col-lg-6 col-sm-12">
                 <div className="form-group">
-                  <label>Subtitle</label>
+                  <label>{t('addHeaderImage.subtitleLabel')}</label>
                   <input
                     type="text"
                     className="form-control"
                     value={subtitle}
                     onChange={(e) => setSubtitle(e.target.value)}
                     required
-                    placeholder="Enter subtitle"
+                    placeholder={t('addHeaderImage.subtitlePlaceholder')}
                   />
                 </div>
               </div>
               <div className="col-lg-12">
                 <div className="form-group">
-                  <label>Background Image (1366x768)</label>
+                  <label>{t('addHeaderImage.bgImageLabel')}</label>
                   <div className="image-upload position-relative">
                     <input
                       type="file"
@@ -122,8 +130,8 @@ const AddHeaderImage = () => {
                     />
                     {!previewImage && (
                       <div className="image-uploads text-center">
-                        <img src="assets/img/icons/upload.svg" alt="Upload icon" />
-                        <h4>Drag and drop a file to upload</h4>
+                        <img src="assets/img/icons/upload.svg" alt={t('addHeaderImage.uploadIconAlt')} />
+                        <h4>{t('addHeaderImage.uploadText')}</h4>
                       </div>
                     )}
                     {previewImage && (
@@ -131,7 +139,7 @@ const AddHeaderImage = () => {
                         <div className="preview-container position-relative">
                           <img
                             src={previewImage}
-                            alt="Preview"
+                            alt={t('addHeaderImage.previewAlt')}
                             className="preview-image img-thumbnail"
                             style={{ width: '100%', height: 'auto', maxHeight: '300px' }}
                           />
@@ -152,10 +160,13 @@ const AddHeaderImage = () => {
                 </div>
               </div>
               <div className="d-flex col-lg-12">
-                <button type="submit" className="btn btn-submit me-2">
-                  Submit
+                <button type="submit" className="btn btn-submit me-2" disabled={isLoading}>
+                {isLoading ? (
+                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                  ) : (
+                  t('addHeaderImage.submitButton')
+                )}
                 </button>
-                
               </div>
             </div>
           </form>

@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './AddAbout.css'; // Assurez-vous d'importer le fichier CSS personnalisé
 import { useTranslation } from 'react-i18next';
+import { Spinner } from 'react-bootstrap';
 const AddAbout = () => {
   const { t } = useTranslation();
   const [description, setDescription] = useState('');
@@ -13,6 +14,7 @@ const AddAbout = () => {
   const [image2, setImage2] = useState(null);
   const [image3, setImage3] = useState(null);
   const [image4, setImage4] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // État pour le chargement
 
   useEffect(() => {
     const fetchAboutData = async () => {
@@ -59,6 +61,7 @@ const AddAbout = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Début du chargement
     try {
       const aboutData = {
         description,
@@ -74,8 +77,10 @@ const AddAbout = () => {
       };
 
       await AboutService.saveAbout(aboutData, images);
+      setIsLoading(false); // Fin du chargement
       toast.success(t('about_section_updated_successfully'));
     } catch (error) {
+      setIsLoading(false); // Fin du chargement
       toast.error(t('error_updating_about_section', { message: error.message }));
     }
   };
@@ -233,7 +238,13 @@ const AddAbout = () => {
               </div>
 
               <div className="col-lg-12">
-                <button type="submit" className="btn btn-submit me-2">{t('submit')}</button>
+                <button type="submit" className="btn btn-submit me-2" disabled={isLoading}>
+                {isLoading ? (
+                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                  ) : (
+                  t('submit')
+                )}
+                  </button>
               
               </div>
             </div>

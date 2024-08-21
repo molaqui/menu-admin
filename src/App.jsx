@@ -22,7 +22,7 @@ import CategoryList from './pages/CategoryList/CategoryList';
 import LoginForm from './pages/LogIn/LoginForm';
 import PrivateRoute from './pages/PrivateRoute/PrivateRoute';
 import Profile from './pages/Profile/Profile';
-import ErrorPage from './pages/ErrorPage/ErrorPage';
+
 function App() {
   const { i18n } = useTranslation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,8 +48,13 @@ function App() {
 
   const handleSignOut = () => {
     sessionStorage.removeItem('token');
+
+    // Delete the userId cookie
+    document.cookie = "userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
     setIsLoggedIn(false);
-  };
+};
+
 
   const handleLanguageChange = (lng) => {
     i18n.changeLanguage(lng);
@@ -83,8 +88,7 @@ function App() {
                   <Route path="/categories" element={<PrivateRoute isLoggedIn={isLoggedIn} element={CategoryList} />} />
                   <Route path="/location-map" element={<PrivateRoute isLoggedIn={isLoggedIn} element={AddLocation} />} />
                   <Route path="/profile" element={<PrivateRoute isLoggedIn={isLoggedIn} element={Profile} />} />
-                  <Route path="/error" element={<ErrorPage />} />
-                  <Route path="*" element={<Navigate to="/error" />} />
+                  <Route path="*" element={<Navigate to="/" />} />
                 </Route>
               </Routes>
             </div>

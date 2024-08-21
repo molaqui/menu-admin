@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import imageCompression from 'browser-image-compression';
 import { useTranslation } from 'react-i18next';
-
+import { Spinner } from 'react-bootstrap';
 const AddChef = () => {
   const [name, setName] = useState('');
   const [designation, setDesignation] = useState('');
@@ -12,6 +12,7 @@ const AddChef = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [facebookUrl, setFacebookUrl] = useState('');
   const [instagramUrl, setInstagramUrl] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // État pour le chargement
   const { t } = useTranslation();
   const handleImageChange = async (e) => {
     const file = e.target.files[0];
@@ -74,6 +75,7 @@ const AddChef = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Début du chargement
     if (!image) {
       toast.error(t('errors.no_image'));
       return;
@@ -89,6 +91,7 @@ const AddChef = () => {
 
       await chefService.saveChef(chefData);
       toast.success(t('success.chef_added'));
+      setIsLoading(false); // Fin du chargement
       setName('');
       setDesignation('');
       setImage(null);
@@ -97,7 +100,9 @@ const AddChef = () => {
       setInstagramUrl('');
     } catch (error) {
       toast.error(t('errors.adding_chef') + ': ' + error.message);
+      setIsLoading(false); // Fin du chargement
     }
+
   };
 
 
@@ -106,8 +111,8 @@ const AddChef = () => {
       <ToastContainer />
       <div className="page-header">
         <div className="page-title">
-        <h4>{t('add_chef.title')}</h4>
-        <h6>{t('add_chef.description')}</h6>
+          <h4>{t('add_chef.title')}</h4>
+          <h6>{t('add_chef.description')}</h6>
         </div>
       </div>
 
@@ -117,7 +122,7 @@ const AddChef = () => {
             <div className="row">
               <div className="col-lg-3 col-sm-6 col-12">
                 <div className="form-group">
-                <label htmlFor="name">{t('add_chef.name')}</label>
+                  <label htmlFor="name">{t('add_chef.name')}</label>
                   <input
                     type="text"
                     className="form-control"
@@ -130,7 +135,7 @@ const AddChef = () => {
               </div>
               <div className="col-lg-3 col-sm-6 col-12">
                 <div className="form-group">
-                <label htmlFor="designation">{t('add_chef.designation')}</label>
+                  <label htmlFor="designation">{t('add_chef.designation')}</label>
                   <input
                     type="text"
                     className="form-control"
@@ -143,7 +148,7 @@ const AddChef = () => {
               </div>
               <div className="col-lg-3 col-sm-6 col-12">
                 <div className="form-group">
-                <label htmlFor="facebookUrl">{t('add_chef.facebook_url')}</label>
+                  <label htmlFor="facebookUrl">{t('add_chef.facebook_url')}</label>
                   <input
                     type="url"
                     className="form-control"
@@ -155,7 +160,7 @@ const AddChef = () => {
               </div>
               <div className="col-lg-3 col-sm-6 col-12">
                 <div className="form-group">
-                <label htmlFor="instagramUrl">{t('add_chef.instagram_url')}</label>
+                  <label htmlFor="instagramUrl">{t('add_chef.instagram_url')}</label>
                   <input
                     type="url"
                     className="form-control"
@@ -167,7 +172,7 @@ const AddChef = () => {
               </div>
               <div className="col-lg-12">
                 <div className="form-group">
-                <label htmlFor="image">{t('add_chef.header_image')}</label>
+                  <label htmlFor="image">{t('add_chef.header_image')}</label>
                   <div className="image-upload">
                     <input
                       type="file"
@@ -179,7 +184,7 @@ const AddChef = () => {
                     {imagePreview && (
                       <div className="image-preview">
                         <img src={imagePreview} alt="Preview" style={{ maxWidth: '100% !important', height: 'auto' }} />
-                      
+
                       </div>
                     )}
                     {!imagePreview && (
@@ -192,7 +197,14 @@ const AddChef = () => {
                 </div>
               </div>
               <div className="col-lg-12">
-              <button type="submit" className="btn btn-submit me-2">{t('add_chef.submit')}</button>
+                <button type="submit" className="btn btn-submit me-2" disabled={isLoading}>
+                  {isLoading ? (
+                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                  ) : (
+                    t('add_chef.submit')
+                  )}
+                </button>
+
               </div>
             </div>
           </form>

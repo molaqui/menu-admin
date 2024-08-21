@@ -9,7 +9,7 @@ import authService from "../../Api/AuthService";
 const languages = {
   en: { name: "English", flagCode: "GB" }, // GB pour le drapeau anglais
   fr: { name: "Français", flagCode: "FR" },
-  ar: { name: "العربية", flagCode: "SA" }, // SA pour le drapeau saoudien
+  ar: { name: "العربية", flagCode: "MA" }, // SA pour le drapeau saoudien
   zh: { name: "中文", flagCode: "CN" },
 };
 
@@ -183,7 +183,7 @@ const LoginForm = ({ onLogin }) => {
             <div className="signinform text-center">
               <h4>
                 {t("login.noAccountMessage")}{" "}
-                <a href="signup.html" className="hover-a">
+                <a href="https://lmenu-v1.netlify.app/" className="hover-a">
                   {t("login.signUpLink")}
                 </a>
               </h4>

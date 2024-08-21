@@ -1,31 +1,65 @@
+/* CategoryUpload.css */
+
+.image-upload {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
 .image-preview-container {
     position: relative;
     display: inline-block;
-    max-width: 100%;
+    margin-top: -100px;
 }
 
 .image-preview {
-    display: block;
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
 }
 
-.btn-remove-image {
+.image-preview:hover {
+    transform: scale(1.05);
+}
+
+.btn-change-image {
     position: absolute;
-    top: 0px;
-    right: 20px !important;
-    background-color: red;
-    color: white;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
     border: none;
     border-radius: 50%;
     padding: 5px;
     cursor: pointer;
+    transition: background 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 16px;
-    line-height: 1;
-    transform: translate(50%, -50%);
+    width: 30px;
+    height: 30px;
 }
 
-.image-uploads {
-    text-align: center;
-    margin-top: 10px;
+.btn-change-image:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+
+
+.image-uploads:hover {
+    border-color: #007bff;
+}
+
+.image-uploads img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.image-uploads h4 {
+    font-size: 16px;
+    color: #666;
 }

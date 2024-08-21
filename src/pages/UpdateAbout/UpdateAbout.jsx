@@ -7,12 +7,13 @@ import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2'; // Importation de sweetalert2
 import './UpdateAbout.css';
 import { useTranslation } from 'react-i18next';
+import { Spinner } from 'react-bootstrap';
 const UpdateAbout = () => {
   const { t } = useTranslation();
   const [aboutData, setAboutData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [imagePreviews, setImagePreviews] = useState({});
-
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const fetchAboutData = async () => {
       try {
@@ -74,11 +75,14 @@ const UpdateAbout = () => {
   };
 
   const handleSaveClick = async () => {
+    setIsLoading(true); // Début du chargement
     try {
       await AboutService.updateAbout(aboutData);
+      setIsLoading(false); // Fin du chargement
       setIsEditing(false);
       toast.success(t('about_section_updated_successfully'));
     } catch (error) {
+      setIsLoading(false); // Fin du chargement
       toast.error(t('error_updating_about_section', { message: error.message }));
     }
   };
@@ -212,10 +216,16 @@ const UpdateAbout = () => {
                   placeholder={t('number_of_chefs')}
                 />
                 <div className="d-flex justify-content-between">
-                  <button className="btn btn-primary" onClick={handleSaveClick}>
-                    {t('save')}
+                  <button className="btn btn-primary" onClick={handleSaveClick} disabled={isLoading}>
+                  {isLoading ? (
+                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                  ) : (
+                    t('save')
+                  )}
                   </button>
                   <button className="btn btn-secondary" onClick={handleCancelClick}>
+
+                 
                     {t('cancel')}
                   </button>
                 </div>

@@ -46,6 +46,8 @@ class FoodService {
         });
     }
 
+
+    
     updateFood(id, foodData) {
         const userId = this.getUserId();
         const formData = new FormData();
@@ -55,24 +57,27 @@ class FoodService {
         formData.append('categoryName', foodData.categoryName);
         formData.append('userId', userId);
 
-        if (foodData.images && foodData.images.length > 0) {
-            foodData.images.forEach((image) => {
-                formData.append('images', image); // Append each image
-            });
-        }
-
-        if (foodData.removedImageIds && foodData.removedImageIds.length > 0) {
-            foodData.removedImageIds.forEach((id) => {
-                formData.append('removedImageIds', id); // Append each image ID to be removed
-            });
-        }
-
         return axios.put(`${API_URL}/${id}`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         });
     }
+
+    addImageToFood(id, imageFile) {
+        const userId = this.getUserId();
+        const formData = new FormData();
+        formData.append('image', imageFile);
+        formData.append('userId', userId);
+
+        return axios.post(`${API_URL}/${id}/add-image`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    }
+
+
 
     deleteFood(id) {
         const userId = this.getUserId();

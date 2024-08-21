@@ -4,10 +4,12 @@ import Swal from 'sweetalert2';
 import userService from '../../Api/AuthService';
 import './Profile.css';
 import { useTranslation } from 'react-i18next';
+import { Spinner } from 'react-bootstrap';
 const Profile = () => {
   const { t } = useTranslation(); // Initialiser useTranslation
   const [user, setUser] = useState(null);
   const [logo, setLogo] = useState(null);
+  const [isLoading, setIsLoading] = useState(false); // État pour le chargement
   const [previewLogo, setPreviewLogo] = useState(null);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -16,6 +18,7 @@ const Profile = () => {
     phone: '',
     storeName: '',
     password: '',
+    logo: ''
   });
 
   useEffect(() => {
@@ -32,15 +35,11 @@ const Profile = () => {
             phone: userData.phone,
             storeName: userData.storeName,
             password: userData.password,
+            logo: `data:image/jpeg;base64,${userData.logo}`
           });
-
-          const logoResponse = await userService.getLogo(userId);
-          setLogo(URL.createObjectURL(logoResponse.data));
         } catch (error) {
           console.error('Error fetching user data:', error);
         }
-      } else {
-        console.error('No user ID found in cookie');
       }
     };
 
@@ -59,11 +58,14 @@ const Profile = () => {
   };
 
   const handleUpdate = async () => {
+    setIsLoading(true); // Début du chargement
     const userId = Cookies.get('userId');
     try {
       await userService.updateUser(userId, formData, logo);
+      setIsLoading(false); // Fin du chargement
       Swal.fire(t('profile.update_success'), '', 'success');
     } catch (error) {
+      setIsLoading(false); // Fin du chargement
       Swal.fire(t('profile.update_error'), '', 'error');
     }
   };
@@ -85,7 +87,7 @@ const Profile = () => {
         <div className="profile-header">
           <div className="profile-image-container">
             <img
-              src={previewLogo || logo || 'assets/img/customer/customer5.jpg'}
+              src={previewLogo || formData.logo || 'assets/img/customer/customer5.jpg'}
               alt="Profile"
               className="profile-image"
             />
@@ -105,31 +107,31 @@ const Profile = () => {
         <div className="profile-body">
           <div className="form-row">
             <div className="form-group">
-            <label>{t('profile.first_name')}</label>
+              <label>{t('profile.first_name')}</label>
               <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} />
             </div>
             <div className="form-group">
-            <label>{t('profile.last_name')}</label>
+              <label>{t('profile.last_name')}</label>
               <input type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} />
             </div>
           </div>
           <div className="form-row">
             <div className="form-group">
-            <label>{t('profile.email')}</label>
+              <label>{t('profile.email')}</label>
               <input type="email" name="email" value={formData.email} onChange={handleInputChange} />
             </div>
             <div className="form-group">
-            <label>{t('profile.phone')}</label>
+              <label>{t('profile.phone')}</label>
               <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} />
             </div>
           </div>
           <div className="form-row">
             <div className="form-group">
-            <label>{t('profile.store_name')}</label>
+              <label>{t('profile.store_name')}</label>
               <input type="text" name="storeName" value={formData.storeName} onChange={handleInputChange} />
             </div>
             <div className="form-group">
-            <label>{t('profile.password')}</label>
+              <label>{t('profile.password')}</label>
               <div className="password-group">
                 <input type="password" name="password" className="pass-input" value={formData.password} onChange={handleInputChange} />
                 <span className="toggle-password fas fa-eye-slash"></span>
@@ -137,7 +139,13 @@ const Profile = () => {
             </div>
           </div>
           <div className="form-actions">
-            <button className="btn-submit" onClick={handleUpdate}>{t('profile.submit')}</button>
+            <button className="btn-submit" onClick={handleUpdate} disabled={isLoading}>
+            {isLoading ? (
+                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                  ) : (
+              t('profile.submit')
+            )}
+              </button>
           </div>
         </div>
       </div>

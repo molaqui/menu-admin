@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import './FoodForm.css'; // Assurez-vous que vos styles spécifiques sont définis ici
 import foodService from '../../Api/foodService';
 import categoryService from '../../Api/CategoryService';
-
+import { Spinner } from 'react-bootstrap'; 
 const initialFormData = {
   name: '',
   price: '',
@@ -19,6 +19,7 @@ function FoodForm() {
   const [formData, setFormData] = useState(initialFormData);
   const [categories, setCategories] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(false); // État pour le chargement
 
   useEffect(() => {
     categoryService
@@ -56,6 +57,8 @@ function FoodForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true); // Début du chargement
+
     foodService
       .addFood(formData)
       .then((response) => {
@@ -66,8 +69,12 @@ function FoodForm() {
       .catch((error) => {
         toast.error(t('foodForm.addError') + ': ' + error.message);
         console.error(error);
+      })
+      .finally(() => {
+        setIsLoading(false); // Fin du chargement
       });
   };
+
 
   return (
     <div className="p-3">
@@ -179,8 +186,12 @@ function FoodForm() {
                 </select>
               </div>
               <div className="col-12">
-                <button type="submit" className="btn btn-primary">
-                  {t('foodForm.addFoodButton')}
+              <button type="submit" className="btn btn-primary" disabled={isLoading}>
+                  {isLoading ? (
+                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                  ) : (
+                    t('foodForm.addFoodButton')
+                  )}
                 </button>
               </div>
             </form>

@@ -41,13 +41,14 @@
   },
 
   "sidebar": {
+    "header": " صورة في الاعلى",
     "dashboard": "لوحة القيادة",
     "categories": "الفئات",
     "addCategory": "أضف فئة",
     "listCategories": "قائمة الفئات",
-    "articles": "المقالات",
-    "addArticle": "أضف مقال",
-    "listArticles": "قائمة المقالات",
+    "foods": "الأطعمة", 
+    "addFood": "أضف طعام",  
+    "listFoods": "قائمة الأطعمة",
     "qrCode": "رمز الاستجابة السريعة",
     "tableOrders": "طلبات الطاولة",
     "deliveryOrders": "طلبات التوصيل",
@@ -87,7 +88,7 @@
     "previewAlt": "معاينة",
     "removeImageButton": "x",
     "dragDropInstruction": "اسحب وأفلت ملفًا لتحميله",
-    "uploadButton": "تحميل",
+    "uploadButton": "إضافة فئة",
     "selectImageError": "يرجى اختيار ملف صورة.",
     "uploadSuccess": "تم تحميل الفئة والصورة بنجاح",
     "uploadError": "خطأ في تحميل الفئة والصورة: {{error}}"
@@ -152,7 +153,14 @@
         "confirmDeletion": "تأكيد الحذف",
         "confirmDeletionText": "هل أنت متأكد أنك تريد حذف هذا العنصر من الطعام؟",
         "cancel": "إلغاء",
-        "delete": "حذف"
+        "delete": "حذف",
+        
+          "addImage": "إضافة صورة",
+          "uploadImage": "تحميل صورة",
+          "addImageButton": "إضافة صورة",
+          "foodDetails": "تفاصيل الطعام",
+          "close": "إغلاق"
+        
     },
     "qrCodeGenerator": {
         "title": "مولد رمز الاستجابة السريعة",
@@ -321,7 +329,8 @@
     "confirm_button_no": "إلغاء"
   },
   "success": {
-    "chef_added": "تم إضافة الطاهي بنجاح"
+    "chef_added": "تم إضافة الطاهي بنجاح",
+     "imageAdded": "تمت إضافة صورة الرأس بنجاح"
   },
 
   "chefs_list": {
@@ -394,6 +403,7 @@
   
     "add_map_link": "إضافة رابط الخريطة",
     "google_maps_embed_link": "رابط تضمين خرائط جوجل",
+    "how_to_add_location": "كيفية إضافة الموقع",
     "add_location": "إضافة الموقع",
     "location_added_successfully": "تمت إضافة الموقع بنجاح",
     "error_fetching_location": "خطأ في جلب الموقع",
@@ -408,7 +418,7 @@
       "last_name": "الاسم الأخير",
       "email": "البريد الإلكتروني",
       "phone": "الهاتف",
-      "store_name": "اسم المتجر",
+      "store_name": "اسم المطعم",
       "password": "كلمة المرور",
       "submit": "إرسال",
        "update_success": "تم تحديث الملف الشخصي بنجاح!",
@@ -418,8 +428,40 @@
     "404": "404",
     "oops": "عذرًا! الصفحة غير موجودة!",
     "description": "الصفحة التي طلبتها لم تُعثر.",
-    "backHome": "العودة إلى الصفحة الرئيسية"
+    "backHome": "العودة إلى الصفحة الرئيسية",
+    "noImageSelected": "يرجى تحديد صورة الخلفية.",
+    "imageAdd": "خطأ في إضافة صورة الرأس:"
+  },
+  "addHeaderImage": {
+    "pageTitle": "إضافة صورة رأس",
+    "pageSubtitle": "إنشاء إدخال جديد لصورة الرأس",
+    "titleLabel": "العنوان",
+    "titlePlaceholder": "أدخل العنوان",
+    "subtitleLabel": "العنوان الفرعي",
+    "subtitlePlaceholder": "أدخل العنوان الفرعي",
+    "bgImageLabel": "صورة الخلفية (1366x768)",
+    "uploadIconAlt": "رمز التحميل",
+    "uploadText": "اسحب وأفلت ملف للتحميل",
+    "previewAlt": "معاينة",
+    "submitButton": "إرسال"
+  },
+ "dashboard": {
+    "visitors": "عدد الزوار",
+    "categories": "عدد الفئات",
+    "articles": "عدد الأطعمة",
+    "boostMenu": "! عزز قائمتك بهذه الفئات " ,
+    "searchPlaceholder": "ابحث عن الفئات...",
+    "addCategories": "أضف الفئات المحددة",
+    "successTitle": "نجاح",
+    "successMessage": "تمت إضافة الفئات والأطعمة المرتبطة بها بنجاح.",
+    "errorTitle": "خطأ",
+    "errorMessage": "حدث خطأ أثناء إضافة الفئات المحددة.",
+    "previous": "السابق",
+    "next": "التالي",
+    "addingCategories": "إضافة الفئات...",
+    "waitMessage": "يرجى الانتظار أثناء إضافة الفئات."
   }
+
   
   
   }

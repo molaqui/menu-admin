@@ -46,13 +46,14 @@
 
 
         "sidebar": {
+          
             "dashboard": "Tableau de bord",
             "categories": "Catégories",
             "addCategory": "Ajouter une catégorie",
             "listCategories": "Liste des catégories",
-            "articles": "Articles",
-            "addArticle": "Ajouter un article",
-            "listArticles": "Liste des articles",
+            "foods": "Aliments",  
+            "addFood": "Ajouter un aliment",  
+            "listFoods": "Liste des aliments",
             "qrCode": "QR Code",
             "tableOrders": "Commandes de table",
             "deliveryOrders": "Commandes de livraison",
@@ -66,7 +67,8 @@
             "updateAbout": "Mettre à jour À propos",
             "locationMap": "Carte des lieux",
             "yourWebsite": "Votre site Web",
-            "websiteUrlNotAvailable": "URL du site Web non disponible"
+            "websiteUrlNotAvailable": "URL du site Web non disponible",
+            "header": "Image de l'en-tête"
           },
 
 "navbar": {
@@ -92,7 +94,7 @@
     "previewAlt": "Aperçu",
     "removeImageButton": "x",
     "dragDropInstruction": "Faites glisser et déposez un fichier pour télécharger",
-    "uploadButton": "Télécharger",
+    "uploadButton": "Ajouter catégorie",
     "selectImageError": "Veuillez sélectionner un fichier image.",
     "uploadSuccess": "Catégorie et image téléchargées avec succès",
     "uploadError": "Erreur lors du téléchargement de la catégorie et de l'image : {{error}}"
@@ -157,7 +159,12 @@
     "confirmDeletion": "Confirmer la Suppression",
     "confirmDeletionText": "Êtes-vous sûr de vouloir supprimer cet aliment ?",
     "cancel": "Annuler",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "addImage": "Ajouter une image",
+      "uploadImage": "Télécharger une image",
+      "addImageButton": "Ajouter l'image",
+      "foodDetails": "Détails de l'aliment",
+      "close": "Fermer"
 },
 
 "qrCodeGenerator": {
@@ -325,7 +332,8 @@
     "confirm_button_no": "Annuler"
   },
   "success": {
-    "chef_added": "Chef ajouté avec succès"
+    "chef_added": "Chef ajouté avec succès",
+    "imageAdded": "Image d'en-tête ajoutée avec succès"
   },
 
   "chefs_list": {
@@ -400,6 +408,7 @@
   "add_map_link": "Ajouter un lien de carte",
   "google_maps_embed_link": "Lien d'intégration Google Maps",
   "add_location": "Ajouter l'emplacement",
+  "how_to_add_location": "Comment ajouter une localisation",
   "location_added_successfully": "Emplacement ajouté avec succès",
   "error_fetching_location": "Erreur lors de la récupération de l'emplacement",
   "error_adding_map_link": "Erreur lors de l'ajout du lien de carte",
@@ -412,7 +421,7 @@
     "last_name": "Nom",
     "email": "E-mail",
     "phone": "Téléphone",
-    "store_name": "Nom du magasin",
+    "store_name": "Nom du Restaurant",
     "password": "Mot de passe",
     "submit": "Soumettre",
      "update_success": "Profil mis à jour avec succès !",
@@ -422,9 +431,41 @@
     "404": "404",
     "oops": "Oups ! Page non trouvée !",
     "description": "La page que vous avez demandée n'a pas été trouvée.",
-    "backHome": "Retour à l'accueil"
+    "backHome": "Retour à l'accueil",
+    "noImageSelected": "Veuillez sélectionner une image de fond.",
+    "imageAdd": "Erreur lors de l'ajout de l'image d'en-tête :"
   }
+,
 
+"addHeaderImage": {
+    "pageTitle": "Ajouter une image d'en-tête",
+    "pageSubtitle": "Créer une nouvelle entrée d'image d'en-tête",
+    "titleLabel": "Titre",
+    "titlePlaceholder": "Entrez le titre",
+    "subtitleLabel": "Sous-titre",
+    "subtitlePlaceholder": "Entrez le sous-titre",
+    "bgImageLabel": "Image de fond (1366x768)",
+    "uploadIconAlt": "Icône de téléchargement",
+    "uploadText": "Faites glisser et déposez un fichier pour télécharger",
+    "previewAlt": "Aperçu",
+    "submitButton": "Soumettre"
+  },
+  "dashboard": {
+    "visitors": "Nombre de visiteurs",
+    "categories": "Nombre de catégories",
+    "articles": "Nombre d'aliments", 
+    "boostMenu": "Boostez votre menu avec ces catégories !",
+    "searchPlaceholder": "Rechercher des catégories...",
+    "addCategories": "Ajouter les catégories sélectionnées",
+    "successTitle": "Succès",
+    "successMessage": "Catégories et aliments associés ajoutés avec succès.",
+    "errorTitle": "Erreur",
+    "errorMessage": "Une erreur s'est produite lors de l'ajout des catégories sélectionnées.",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "addingCategories": "Ajout des catégories...",
+    "waitMessage": "Veuillez patienter pendant l'ajout des catégories."
+  }
       
   }
   

@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 const languages = {
   en: { name: "English", flagCode: "GB" },
   fr: { name: "Français", flagCode: "FR" },
-  ar: { name: "العربية", flagCode: "SA" },
+  ar: { name: "العربية", flagCode: "MA" },
   zh: { name: "中文", flagCode: "CN" },
 };
 
@@ -33,6 +33,19 @@ function Navbar({ onSignOut }) {
     }
   }, [i18n]);
 
+  useEffect(() => {
+    const userId = Cookies.get("userId");
+    if (userId) {
+      const intervalId = setInterval(() => {
+        fetchMessages(userId);
+        fetchUserById(userId);
+        console.log("Polling messages");
+      }, 30000); // Polling every 30 seconds
+
+      return () => clearInterval(intervalId); // Clean up interval on component unmount
+    }
+  }, []);
+
   const fetchUserById = async (userId) => {
     try {
       const userData = await AuthService.getUserById(userId);
@@ -46,6 +59,7 @@ function Navbar({ onSignOut }) {
     try {
       const userMessages = await MessageService.getMessagesByUserId(userId);
       setMessages(userMessages);
+      console.log("Messages fetched successfully");
     } catch (error) {
       console.error("Erreur lors de la récupération des messages :", error);
     }
@@ -211,9 +225,7 @@ function Navbar({ onSignOut }) {
               <NavLink className="dropdown-item" to="profile">
                 <i className="me-2" data-feather="user"></i> {t('navbar.myProfile')}
               </NavLink>
-              <a className="dropdown-item" href="generalsettings.html">
-                <i className="me-2" data-feather="settings"></i> {t('navbar.settings')}
-              </a>
+             
               <hr className="m-0" />
               <a
                 className="dropdown-item logout pb-0"

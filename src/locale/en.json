@@ -46,13 +46,14 @@
 
 
  "sidebar": {
+     "header": "Header Image",
     "dashboard": "Dashboard",
     "categories": "Categories",
     "addCategory": "Add Category",
     "listCategories": "List Categories",
-    "articles": "Articles",
-    "addArticle": "Add Article",
-    "listArticles": "List Articles",
+    "foods": "Foods", 
+    "addFood": "Add Food",  
+    "listFoods": "List Foods",
     "qrCode": "QR Code",
     "tableOrders": "Table Orders",
     "deliveryOrders": "Delivery Orders",
@@ -94,7 +95,7 @@
     "previewAlt": "Preview",
     "removeImageButton": "x",
     "dragDropInstruction": "Drag and drop a file to upload",
-    "uploadButton": "Upload",
+    "uploadButton": "Add Category",
     "selectImageError": "Please select an image file.",
     "uploadSuccess": "Category and image uploaded successfully",
     "uploadError": "Error uploading the category and image: {{error}}"
@@ -161,7 +162,12 @@
         "confirmDeletion": "Confirm Deletion",
         "confirmDeletionText": "Are you sure you want to delete this food item?",
         "cancel": "Cancel",
-        "delete": "Delete"
+        "delete": "Delete",
+        "addImage": "Add Image",
+      "uploadImage": "Upload Image",
+      "addImageButton": "Add Image",
+      "foodDetails": "Food Details",
+      "close": "Close"
     },
 
     "qrCodeGenerator": {
@@ -332,7 +338,8 @@
     "confirm_button_no": "Cancel"
   },
   "success": {
-    "chef_added": "Chef added successfully"
+    "chef_added": "Chef added successfully",
+    "imageAdded": "Header image added successfully"
   },
 
   "chefs_list": {
@@ -408,6 +415,7 @@
  
   "add_map_link": "Add Map Link",
   "google_maps_embed_link": "Google Maps Embed Link",
+  "how_to_add_location": "How to add a location",
   "add_location": "Add Location",
   "location_added_successfully": "Location added successfully",
   "error_fetching_location": "Error fetching location",
@@ -422,7 +430,7 @@
     "last_name": "Last Name",
     "email": "Email",
     "phone": "Phone",
-    "store_name": "Store Name",
+    "store_name": "Restaurant Name",
     "password": "Password",
     "submit": "Submit",
     "update_success": "Profile updated successfully!",
@@ -432,7 +440,40 @@
     "404": "404",
     "oops": "Oops! Page not found!",
     "description": "The page you requested was not found.",
-    "backHome": "Back to Home"
+    "backHome": "Back to Home",
+    "noImageSelected": "Please select a background image.",
+    "imageAdd": "Error adding header image:"
+  },
+
+  "addHeaderImage": {
+    "pageTitle": "Add Header Image",
+    "pageSubtitle": "Create new header image entry",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Enter title",
+    "subtitleLabel": "Subtitle",
+    "subtitlePlaceholder": "Enter subtitle",
+    "bgImageLabel": "Background Image (1366x768)",
+    "uploadIconAlt": "Upload icon",
+    "uploadText": "Drag and drop a file to upload",
+    "previewAlt": "Preview",
+    "submitButton": "Submit"
+  },
+  "dashboard": {
+    "visitors": "Number of visitors",
+    "categories": "Number of categories",
+    "articles": "Food's number",
+    "boostMenu": "Boost Your Menu with These Categories!",
+    "searchPlaceholder": "Search categories...",
+    "addCategories": "Add Selected Categories",
+    "successTitle": "Success",
+    "successMessage": "Categories and associated foods added successfully.",
+    "errorTitle": "Error",
+    "errorMessage": "There was an error adding selected categories.",
+    "previous": "Previous",
+    "next": "Next",
+    "addingCategories": "Adding Categories...",
+    "waitMessage": "Please wait while your categories are being added."
   }
+ 
   
 }

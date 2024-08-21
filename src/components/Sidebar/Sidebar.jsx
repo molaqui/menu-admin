@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Sidebar.css';
 import tokenService from '../../Api/tokenService';
 import { useTranslation } from 'react-i18next';
-
-// Vous pouvez remplacer tokenService par le service approprié si besoin
 import reservationService from '../../Api/ReservationService';
 import orderService from '../../Api/OrderService';
 import messageService from '../../Api/MessageService';
@@ -15,15 +13,15 @@ import {
   faTags,
   faBox,
   faQrcode,
-  faUtensils,
+  faImage,
   faUserCheck,
   faInfoCircle,
   faMapMarkedAlt,
   faExternalLinkAlt,
   faEnvelope,
-  faClipboardList, // Icône pour Table Orders
-  faTruck,        // Icône pour Delivery Orders
-  faCalendarCheck // Icône pour Reservation
+  faClipboardList,
+  faTruck,
+  faCalendarCheck
 } from '@fortawesome/free-solid-svg-icons';
 
 function Sidebar({ isOpen, toggleSidebar }) {
@@ -36,6 +34,27 @@ function Sidebar({ isOpen, toggleSidebar }) {
   const [deliveryOrderCount, setDeliveryOrderCount] = useState(0);
   const [reservationCount, setReservationCount] = useState(0);
   const [messageCount, setMessageCount] = useState(0);
+
+  const fetchCounts = async () => {
+    try {
+      const userId = Cookies.get('userId'); // Assurez-vous que l'ID utilisateur est correctement récupéré
+
+      const [tableOrders, deliveryOrders, reservations, messages] = await Promise.all([
+        orderService.countTableOrders(),
+        orderService.countDeliveryOrders(),
+        reservationService.countReservationsByUserId(),
+        messageService.countMessagesByUserId(userId)
+      ]);
+
+      setTableOrderCount(tableOrders?.data || 0);
+      setDeliveryOrderCount(deliveryOrders?.data || 0);
+      setReservationCount(reservations?.data || 0);
+      setMessageCount(messages || 0);
+    } catch (error) {
+      console.error('Error fetching counts', error);
+    }
+  };
+
   useEffect(() => {
     const fetchWebsiteUrl = async () => {
       try {
@@ -46,37 +65,12 @@ function Sidebar({ isOpen, toggleSidebar }) {
       }
     };
 
-    const fetchCounts = async () => {
-      try {
-        const userId = Cookies.get("userId"); // Assurez-vous que l'ID utilisateur est correctement récupéré
-    
-        // Effectuer les appels API en parallèle
-        const [tableOrders, deliveryOrders, reservations, messages] = await Promise.all([
-          orderService.countTableOrders(),
-          orderService.countDeliveryOrders(),
-          reservationService.countReservationsByUserId(),
-          messageService.countMessagesByUserId(userId)
-        ]);
-    
-        // Inspecter les réponses pour débogage
-        console.log('Table Orders Response:', tableOrders);
-        console.log('Delivery Orders Response:', deliveryOrders);
-        console.log('Reservations Response:', reservations);
-        console.log('Messages Response:', messages);
-    
-        // Assurez-vous que les données existent avant d'accéder à `count`
-        setTableOrderCount(tableOrders?.data || 0);
-        setDeliveryOrderCount(deliveryOrders?.data || 0);
-        setReservationCount(reservations?.data || 0);
-        setMessageCount(messages || 0);
-      } catch (error) {
-        console.error('Error fetching counts', error);
-      }
-    };
-    
-
     fetchWebsiteUrl();
-    fetchCounts();
+    fetchCounts(); // Initial fetch
+
+    const intervalId = setInterval(fetchCounts, 30000); // Polling every 30 seconds
+    console.log("envoiiiii");
+    return () => clearInterval(intervalId); // Clean up interval on component unmount
   }, []);
 
   const handleVisitWebsite = () => {
@@ -119,16 +113,16 @@ function Sidebar({ isOpen, toggleSidebar }) {
             </li>
             <li className={`submenu ${activeSubmenu === 'articles' ? 'open' : ''}`}>
               <a href="#" onClick={() => toggleSubmenu('articles')}>
-                <FontAwesomeIcon icon={faBox} className="fa-icon" alt={t('sidebar.articles')} />
-                <span>{t('sidebar.articles')}</span>
+                <FontAwesomeIcon icon={faBox} className="fa-icon" alt={t('sidebar.foods')} />
+                <span>{t('sidebar.foods')}</span>
                 <span className="menu-arrow"></span>
               </a>
               <ul className={`submenu-list ${activeSubmenu === 'articles' ? 'd-block' : 'd-none'}`}>
                 <li>
-                  <NavLink to="/food-form" onClick={toggleSidebar}>{t('sidebar.addArticle')}</NavLink>
+                  <NavLink to="/food-form" onClick={toggleSidebar}>{t('sidebar.addFood')}</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/food-list" onClick={toggleSidebar}>{t('sidebar.listArticles')}</NavLink>
+                  <NavLink to="/food-list" onClick={toggleSidebar}>{t('sidebar.listFoods')}</NavLink>
                 </li>
               </ul>
             </li>
@@ -139,7 +133,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
               </NavLink>
             </li>
             <li>
-            <NavLink to="/table-orders" onClick={toggleSidebar}>
+              <NavLink to="/table-orders" onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={faClipboardList} className="fa-icon" alt={t('sidebar.tableOrders')} />
                 <span>{t('sidebar.tableOrders')}</span>
                 <span className="badg">{tableOrderCount}</span>
@@ -148,8 +142,8 @@ function Sidebar({ isOpen, toggleSidebar }) {
             <li>
               <NavLink to="/delivery-orders" onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={faTruck} className="fa-icon" alt={t('sidebar.deliveryOrders')} />
-                      <span>{t('sidebar.deliveryOrders')}</span>
-              <span className="badg">{deliveryOrderCount}</span>   
+                <span>{t('sidebar.deliveryOrders')}</span>
+                <span className="badg">{deliveryOrderCount}</span>
               </NavLink>
             </li>
             <li>
@@ -160,11 +154,10 @@ function Sidebar({ isOpen, toggleSidebar }) {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/messages">
+              <NavLink to="/messages" onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={faEnvelope} className="fa-icon" alt={t('sidebar.messages')} />
-                
                 <span>{t('sidebar.messages')}</span>
-                {messageCount > 0 && <span className="badg">{messageCount}</span>}
+                <span className="badg">{messageCount}</span>
               </NavLink>
             </li>
             <li className={`submenu ${activeSubmenu === 'chefs' ? 'open' : ''}`}>
@@ -198,6 +191,12 @@ function Sidebar({ isOpen, toggleSidebar }) {
               </ul>
             </li>
             <li>
+              <li>
+                <NavLink to="/add-header" onClick={toggleSidebar}>
+                  <FontAwesomeIcon icon={faImage} className="fa-icon" alt={t('sidebar.header')} />
+                  <span>{t('sidebar.header')}</span>
+                </NavLink>
+              </li>
               <NavLink to="/location-map" onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={faMapMarkedAlt} className="fa-icon" alt={t('sidebar.locationMap')} />
                 <span>{t('sidebar.locationMap')}</span>
@@ -208,7 +207,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
             <br />
             <li>
               <NavLink className="sidebar-btn" onClick={handleVisitWebsite}>
-                <FontAwesomeIcon icon={faExternalLinkAlt} className="fa-icon" /> { t('sidebar.yourWebsite')}
+                <FontAwesomeIcon icon={faExternalLinkAlt} className="fa-icon" /> {t('sidebar.yourWebsite')}
               </NavLink>
             </li>
           </ul>
