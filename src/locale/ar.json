@@ -121,7 +121,9 @@
     "selectCategoryLabel": "الفئة",
     "selectCategoryPlaceholder": "اختر فئة",
     "addFoodButton": "إضافة طعام",
-    "noImageText": "لا توجد صورة"
+    "noImageText": "لا توجد صورة",
+     "addSuccess": "تمت إضافة الطعام بنجاح",
+    "addError": "تعذر إضافة الطعام"
   },
 
 

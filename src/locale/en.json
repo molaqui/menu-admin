@@ -130,7 +130,9 @@
     "selectCategoryLabel": "Category",
     "selectCategoryPlaceholder": "Select a Category",
     "addFoodButton": "Add Food",
-    "noImageText": "No image"
+    "noImageText": "No image",
+    "addSuccess": "Food added successfully",
+    "addError": "Food could not be added"
   },
 
 

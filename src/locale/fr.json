@@ -127,7 +127,9 @@
     "selectCategoryLabel": "Catégorie",
     "selectCategoryPlaceholder": "Sélectionner une Catégorie",
     "addFoodButton": "Ajouter le Plat",
-    "noImageText": "Pas d'image"
+    "noImageText": "Pas d'image",
+     "addSuccess": "Nourriture ajoutée avec succès",
+    "addError": "La nourriture n'a pas pu être ajoutée"
   },
 
 

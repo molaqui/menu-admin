@@ -119,7 +119,9 @@
     "selectCategoryLabel": "类别",
     "selectCategoryPlaceholder": "选择一个类别",
     "addFoodButton": "添加食品",
-    "noImageText": "没有图片"
+    "noImageText": "没有图片",
+     "addSuccess": "食物添加成功",
+    "addError": "食物添加失败"
   },
 
 
