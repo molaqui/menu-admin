@@ -191,13 +191,16 @@ function Sidebar({ isOpen, toggleSidebar }) {
               </ul>
             </li>
             <li>
-              <li>
+             
                 <NavLink to="/add-header" onClick={toggleSidebar}>
                   <FontAwesomeIcon icon={faImage} className="fa-icon" alt={t('sidebar.header')} />
                   <span>{t('sidebar.header')}</span>
                 </NavLink>
-              </li>
-              <NavLink to="/location-map" onClick={toggleSidebar}>
+             
+              
+            </li>
+            <li>
+            <NavLink to="/location-map" onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={faMapMarkedAlt} className="fa-icon" alt={t('sidebar.locationMap')} />
                 <span>{t('sidebar.locationMap')}</span>
               </NavLink>

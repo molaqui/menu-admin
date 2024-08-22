@@ -1,20 +1,14 @@
 /* Dashboard.css */
 
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f2f5;
-  }
+
   
   .dashboard {
-    padding: 20px;
+    padding: 30px !important;
   }
   
-  .content {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
   
-  .row {
+  
+  .roww {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -88,14 +82,14 @@ body {
     justify-content: space-between;
   }
   
-  .category-image {
+  .category-imagee {
     width: 90px; /* Increased size */
     height: 90px; /* Increased size */
     border-radius: 50px !important; /* Changed to 10px for a more modern look */
     margin-right: 15px;
   }
   
-  .category-info {
+  .category-infoo {
     flex-grow: 1;
   }
   
@@ -116,18 +110,18 @@ body {
     cursor: pointer;
   }
   
-  .foods-list {
+  .foods-listt {
     margin-top: 15px;
     margin-left: 80px; /* Adjusted margin to match the new category image size */
   }
   
-  .food-item {
+  .food-itemm {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
   }
   
-  .food-image {
+  .food-imagee {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -135,22 +129,22 @@ body {
     margin-top: 10px;
   }
   
-  .food-info {
+  .food-infoo {
     flex-grow: 1;
   }
   
-  .food-name {
+  .food-namee {
     font-size: 16px;
     color: #333;
   }
   
-  .food-description {
+  .food-descriptionn {
     font-size: 14px;
     color: #777;
     margin-left: 30px;
   }
   
-  .food-price {
+  .food-pricee {
     font-size: 14px;
     margin-left: 30px;
     color: #007bff;
@@ -205,7 +199,7 @@ body {
     opacity: 1;
   }
   
-  .submit-button {
+  .submit-buttonn {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -215,35 +209,37 @@ body {
     transition: background-color 0.3s ease;
   }
   
-  .submit-button:disabled {
+  .submit-buttonn:disabled {
     background-color: #ccc;
     cursor: not-allowed;
   }
   
-  .submit-button:hover:enabled {
+  .submit-buttonn:hover:enabled {
     background-color: #0056b3;
   }
   
-  .search-bar {
-    margin-bottom: 20px !important;
-    justify-content: flex-end !important;  /* Align to the right */
+  .search-barr {
+    margin-bottom: 27px !important;
+    display: flex; /* Ensure the container is a flex container */
+    justify-content: center !important; /* Align to the center */
   }
   
-  .search-input {
-    width: 80% !important;
+  .search-inpu {
+    width: 40% !important;
     padding: 10px;
     border-radius: 50px !important;
     border: 1px solid #ddd;
     font-size: 16px;
+    
   }
   
-  .pagination {
+  .paginatio {
     margin-top: 20px;
     display: flex;
     justify-content: center;
   }
   
-  .pagination button {
+  .paginatio button {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -254,11 +250,11 @@ body {
     transition: background-color 0.3s ease;
   }
   
-  .pagination button:hover {
+  .paginatio button:hover {
     background-color: #0056b3;
   }
   
-  .pagination button:disabled {
+  .paginatio button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
   }

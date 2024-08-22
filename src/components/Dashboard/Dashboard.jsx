@@ -6,6 +6,7 @@ import categoryService from '../../Api/CategoryService';
 import Cookies from 'js-cookie';
 import Swal from 'sweetalert2';
 import { Oval } from 'react-loader-spinner';
+import './Dashboard.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUtensils, faLayerGroup, faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -140,9 +141,9 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-      <link rel="stylesheet" href="Dashboard.css"></link>
+    
       <div className="">
-        <div className="row">
+        <div className="roww">
           <div className="col-lg-4 col-sm-12 col-12 d-flex">
             <div className="dash-count">
               <div className="dash-counts">
@@ -179,11 +180,11 @@ function Dashboard() {
         </div>
         <div className="predefined-categories">
           <h2>{t('dashboard.boostMenu')}</h2> {/* Use translation */}
-          <div className="search-bar">
+          <div className="search-barr">
             <input
               type="text"
               placeholder={t('dashboard.searchPlaceholder')} // Use translation
-              className="search-input"
+              className="search-inpu"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -201,8 +202,8 @@ function Dashboard() {
                     checked={selectedCategoryIds.includes(category.id)}
                   />
                   <label htmlFor={`category-${category.id}`}></label>
-                  <img src={`data:image/jpeg;base64,${category.image}`} alt={category.name} className="category-image" />
-                  <div className="category-info">
+                  <img src={`data:image/jpeg;base64,${category.image}`} alt={category.name} className="category-imagee" />
+                  <div className="category-infoo">
                     <span className="category-name">{category.name}</span>
                     <span className="food-count">({category.foods.length} {t('dashboard.articles')})</span> {/* Use translation */}
                   </div>
@@ -211,9 +212,9 @@ function Dashboard() {
                   </button>
                 </div>
                 {expandedCategories.includes(category.id) && (
-                  <div className="foods-list">
+                  <div className="foods-listt">
                     {category.foods.map((food) => (
-                      <div key={food.id} className="food-item">
+                      <div key={food.id} className="food-itemm">
                         <input
                           type="checkbox"
                           id={`food-${food.id}`}
@@ -223,11 +224,11 @@ function Dashboard() {
                           checked={selectedFoodIds.includes(food.id)}
                         />
                         <label htmlFor={`food-${food.id}`}></label>
-                        <img src={getFirstImage(food.images)} alt={food.name} className="food-image" />
-                        <div className="food-info">
-                          <span className="food-name">{food.name}</span>
-                          <span className="food-description">{food.description}</span>
-                          <span className="food-price">${food.price.toFixed(2)}</span>
+                        <img src={getFirstImage(food.images)} alt={food.name} className="food-imagee" />
+                        <div className="food-infoo">
+                          <span className="food-namee">{food.name}</span>
+                          <span className="food-descriptionn">{food.description}</span>
+                          <span className="food-pricee">${food.price.toFixed(2)}</span>
                         </div>
                       </div>
                     ))}
@@ -236,7 +237,7 @@ function Dashboard() {
               </li>
             ))}
           </ul>
-          <div className="pagination">
+          <div className="paginatio">
             <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
               {t('dashboard.previous')} {/* Use translation */}
             </button>
@@ -244,7 +245,7 @@ function Dashboard() {
               {t('dashboard.next')} {/* Use translation */}
             </button>
           </div>
-          <button className="submit-button" onClick={handleSubmit} disabled={selectedCategoryIds.length === 0 || loading}>
+          <button className="submit-buttonn" onClick={handleSubmit} disabled={selectedCategoryIds.length === 0 || loading}>
             {loading ? <Oval color="#fff" height={20} width={20} /> : t('dashboard.addCategories')} {/* Use translation */}
           </button>
         </div>
