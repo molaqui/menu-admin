@@ -192,7 +192,7 @@ function Navbar({ onSignOut }) {
                 />
               ) : (
                 <img
-                  src="assets/img/profiles/avator1.jpg"
+                  src="assets/img/admin.jpg"
                   alt={t('navbar.defaultAvatar')}
                 />
               )}
@@ -210,7 +210,7 @@ function Navbar({ onSignOut }) {
                     />
                   ) : (
                     <img
-                      src="assets/img/profiles/avator1.jpg"
+                      src="assets/img/admin.jpg"
                       alt={t('navbar.defaultAvatar')}
                     />
                   )}

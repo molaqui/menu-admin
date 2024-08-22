@@ -5,8 +5,9 @@ import QRCodeLib from 'qrcode';
 import tokenService from '../../Api/tokenService';
 import './qr.css';
 import { useTranslation } from 'react-i18next';
+import { Spinner } from 'react-bootstrap';
 const QRCodeGenerator = () => {
-  const { t } = useTranslation(); // Ajoutez cette ligne
+  const { t } = useTranslation();
   const [tableCount, setTableCount] = useState(null);
   const [qrCodes, setQrCodes] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,6 +15,7 @@ const QRCodeGenerator = () => {
   const [websiteUrl, setWebsiteUrl] = useState('');
   const itemsPerPage = 5;
   const canvasRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     tokenService.getWebsiteUrl()
@@ -31,6 +33,13 @@ const QRCodeGenerator = () => {
   };
 
   const generateTokens = async () => {
+    if (!websiteUrl) {
+      
+      console.error('Website URL has not been fetched.');
+      
+      return;
+    }
+    setIsLoading(true);
     const tempQrCodes = [];
     for (let tableNumber = 1; tableNumber <= tableCount; tableNumber++) {
       try {
@@ -41,6 +50,7 @@ const QRCodeGenerator = () => {
         console.error(`Error generating token for table ${tableNumber}`, error);
       }
     }
+    setIsLoading(false);
     setQrCodes(tempQrCodes);
   };
 
@@ -94,7 +104,13 @@ const QRCodeGenerator = () => {
               placeholder={t('qrCodeGenerator.inputPlaceholder')}
               className="form-control w-25"
             />
-            <button onClick={generateTokens} className="btn btn-primary ms-2">{t('qrCodeGenerator.generateButton')}</button>
+            <button onClick={generateTokens} className="btn btn-primary ms-2" disabled={isLoading}>
+            {isLoading ? (
+                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+                  ) : (
+              t('qrCodeGenerator.generateButton')
+            )}
+              </button>
           </div>
 
           {qrCodes.length > 0 && (
@@ -132,7 +148,7 @@ const QRCodeGenerator = () => {
                           <div id={`qrCodeCanvas${tableNumber}`} className="qr-container">
                             <QRCode value={qrCodeUrl} size={100} />
                           </div>
-                         
+                          
                         </td>
                         <td>
                           <button onClick={() => downloadQRCode(tableNumber, qrCodeUrl)} className="btn btn-secondary">
