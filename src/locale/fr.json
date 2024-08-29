@@ -101,7 +101,7 @@
   },
 
   "categoryList": {
-    "foodListTitle": "Liste des Aliments",
+    "foodListTitle": "Liste des catégories",
     "manageListSubtitle": "Gérez votre liste",
     "searchPlaceholder": "Rechercher une catégorie",
     "noImage": "Pas d'image",

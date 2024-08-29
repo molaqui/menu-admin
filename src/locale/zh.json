@@ -94,7 +94,7 @@
     "uploadError": "上传类别和图片时出错：{{error}}"
   },
   "categoryList": {
-    "foodListTitle": "食品列表",
+    "foodListTitle": "类别列表",
     "manageListSubtitle": "管理您的列表",
     "searchPlaceholder": "搜索类别",
     "noImage": "没有图片",
